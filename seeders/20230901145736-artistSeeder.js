@@ -12,6 +12,22 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+    await queryInterface.bulkInsert("Artists", [
+      {
+        id: 1,
+        name: "Carlos",
+        portfolio: "",
+        createdAt: "2023-09-02 00:29:32",
+        updatedAt: "2023-09-02 00:29:32",
+      },
+      {
+        id: 2,
+        name: "Cesar",
+        portfolio: "",
+        createdAt: "2023-09-02 00:29:32",
+        updatedAt: "2023-09-02 00:29:32",
+      },
+    ]);
   },
 
   async down (queryInterface, Sequelize) {
