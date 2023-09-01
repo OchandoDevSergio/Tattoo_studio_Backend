@@ -9,6 +9,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      role_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Roles",
+          key:"id"
+        }
+      },
       name: {
         type: Sequelize.STRING
       },
