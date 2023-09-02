@@ -1,0 +1,14 @@
+
+const router = require('express').Router();
+
+const auth = require('../middlewares/tokenVerify');
+const isAdmin = require('../middlewares/adminroleVerify');
+
+const paymentDatasController = require('../controllers/paymentDatasController');
+
+router.get('/', auth, isAdmin, paymentDatasController.getAllPaymentDatas);
+router.post('/', auth, paymentDatasController.createNewPaymentData);
+router.put('/', auth, paymentDatasController.modifyPaymentData);
+router.delete('/', auth, isAdmin, paymentDatasController.deletePaymentData);
+
+module.exports = router;
