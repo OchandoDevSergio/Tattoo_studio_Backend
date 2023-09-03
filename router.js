@@ -6,7 +6,7 @@ const artistsRouter = require('./views/artistsRouter.js');
 const appointmentsRouter = require('./views/appointmentsRouter.js');
 const usersRouter = require('./views/usersRouter.js');
 const authRouter = require('./views/authsRouter.js');
-const paymentDatasRouter = require('./views/paymentDataRouter.js');
+const paymentDatasRouter = require('./views/paymentDatasRouter.js');
 
 
 //Routing......

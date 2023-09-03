@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   PaymentData.init({
-    cardNumber: DataTypes.INTEGER,
+    cardNumber: DataTypes.STRING,
     validThru: DataTypes.STRING
   }, {
     sequelize,

@@ -3,7 +3,7 @@ const { PaymentData } = require('../models');
 
 const paymentDatasController = {};
 
-paymentDatasController.getAllpaymentDatas = async (req, res) => {
+paymentDatasController.getAllPaymentDatas = async (req, res) => {
 
     try {
 

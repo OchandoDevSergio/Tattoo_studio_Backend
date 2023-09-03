@@ -17,7 +17,7 @@ module.exports = {
         }
       },
       cardNumber: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       validThru: {
         type: Sequelize.STRING

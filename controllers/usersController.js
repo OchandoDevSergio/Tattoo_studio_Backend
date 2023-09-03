@@ -53,7 +53,6 @@ usersController.createNewUser = async (req, res) => {
       role_id: req.body.role_id,
       name: req.body.name,
       surnames: req.body.surnames,
-      dni: req.body.dni,
       email: req.body.email,
       phone: req.body.phone,
       password: newPassword
@@ -82,7 +81,6 @@ usersController.modifyUser = async (req, res) => {
           role_id: req.body.role_id,
           name: req.body.name,
           surnames: req.body.surnames,
-          dni: req.body.dni,
           email: req.body.email,
           phone: req.body.phone
       },
@@ -99,7 +97,6 @@ usersController.modifyUser = async (req, res) => {
         userName: req.body.name,
         userSurnames: req.body.surnames,
         userPhone: req.body.phone,
-        userDni: req.body.dni,
         userEmail: req.body.email
         
       }
