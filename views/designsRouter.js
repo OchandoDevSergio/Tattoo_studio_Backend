@@ -5,7 +5,7 @@ const auth = require('../middlewares/tokenVerify');
 const isAdmin = require('../middlewares/adminroleVerify');
 const isArtist = require('../middlewares/artistroleVerify');
 
-const designsController = require('../controllers/artistsController');
+const designsController = require('../controllers/designsController');
 
 
 router.get('/', designsController.getAllDesigns);

@@ -32,6 +32,7 @@ designsController.createNewDesign = async (req, res) => {
 
     const newDesign = await Design.create({
       artist_id: req.body.artist_id,
+      style: req.body.style,
       picture: req.body.picture,
     });
 
@@ -54,6 +55,7 @@ designsController.modifyDesign = async (req, res) => {
       const updateDesign = await Rental.update(
         {
           artist_id: req.body.artist_id,
+          style: req.body.style,
           picture: req.body.picture,
       },
       {
