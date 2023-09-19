@@ -45,7 +45,6 @@ authController.login = async (req, res) => {
           roleId: user.role_id,
           userSurnames: user.surnames,
           userPhone: user.phone,
-          userDni: user.dni,
           userEmail: user.email
         },
         "kant",
