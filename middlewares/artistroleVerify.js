@@ -1,11 +1,9 @@
 
   const isArtist = (req, res, next) => {
-    console.log(req.roleId);
-
 
     try {
       if (req.roleId !== 3) {
-        console.log(`El role_id es ${roleId}`)
+
         return res.status(501).json({
           success: true,
           message: "No tienes permisos para realizar esta acción",

@@ -17,8 +17,6 @@ authController.login = async (req, res) => {
           email: email,
         },
       });
-
-      console.log("soy user.......", user)
   
       if (!user) {
         return res.status(501).json({
@@ -28,7 +26,6 @@ authController.login = async (req, res) => {
       }
   
       const isMatch = bcrypt.compareSync(password, user.password);
-      console.log(isMatch);
   
       if (!isMatch) {
         return res.status(501).json({
@@ -52,8 +49,6 @@ authController.login = async (req, res) => {
           expiresIn: "4h",
         }
       );
-
-      console.log(user.role_id);
   
       return res.json({
         success: true,

@@ -72,8 +72,6 @@ usersController.createNewUser = async (req, res) => {
 usersController.modifyUser = async (req, res) => {
   let body = req.body;
 
-  console.log(req.body.role_id);
-
   try {
 
       const updateUser = await User.update(
