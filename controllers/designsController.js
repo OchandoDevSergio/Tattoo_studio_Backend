@@ -1,4 +1,4 @@
-const { Design } = require('../models');
+const { Design, Sequelize } = require('../models');
 
 const designsController = {};
 

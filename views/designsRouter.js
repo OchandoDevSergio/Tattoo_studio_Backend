@@ -9,7 +9,7 @@ const designsController = require('../controllers/designsController');
 
 
 router.get('/', designsController.getAllDesigns);
-router.get('/', designsController.searchADesign);
+router.get('/:criteria', designsController.searchADesign);
 router.post('/', auth, isArtist, designsController.createNewDesign);
 router.put('/', auth, isArtist, designsController.modifyDesign);
 router.delete('/', auth, isArtist, designsController.deleteDesign);
