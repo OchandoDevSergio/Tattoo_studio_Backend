@@ -3,29 +3,43 @@ const { Design } = require('../models');
 const designsController = {};
 
 designsController.getAllDesigns = async (req, res) => {
+  try {
+    const allDesigns = await Design.findAll();
 
-    try {
+    return res.json({
+      success: true,
+      message: "Datos de todos los tatuajes recuperados",
+      data: allDesigns,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Los datos no han podido ser recuperados",
+      error: error.message,
+    });
+  }
+};
 
-        const allDesigns = await Design.findAll();
+designsController.searchADesign = async (req, res) => {
+  const Op = Sequelize.Op;
 
-        return res.json({
-            success: true,
-            message: "Datos de todos los diseños recuperados",
-            data: allDesigns,
-        });
+  try {
+    const designs = await Design.findAll({
+      where: { style: { [Op.like]: `%${req.params.criteria}%` } },
+    });
 
-
-    } catch (error) {
-
-        return res.status(500).json({
-            success: false,
-            message: "Los datos no han podido ser recuperados",
-            error: error.message,
-        });
-
-    }
-
-}
+    return res.json({
+      success: true,
+      data: designs,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "No se ha encontrado el tatuaje",
+      error: error.message,
+    });
+  }
+};
 
 designsController.createNewDesign = async (req, res) => {
   try {
