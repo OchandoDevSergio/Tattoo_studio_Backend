@@ -7,7 +7,7 @@ paymentDatasController.searchAPaymentData = async (req, res) => {
   const Op = Sequelize.Op;
 
   try {
-    const paymentDatas = await PaymentData.findAll({
+    const paymentDatas = await PaymentData.findOne({
       where: { user_id: { [Op.like]: `%${req.params.customerId}%` } },
     });
 
@@ -55,7 +55,8 @@ paymentDatasController.createNewPaymentData = async (req, res) => {
 
     const newPaymentData = await PaymentData.create({
       cardNumber: req.body.cardNumber,
-      validThru: req.body.validThru
+      validThru: req.body.validThru,
+      user_id: req.body.user_id
     });
 
     return res.send(newPaymentData);
@@ -77,7 +78,8 @@ paymentDatasController.modifyPaymentData = async (req, res) => {
       const updatePaymentData = await PaymentData.update(
         {
           cardNumber: req.body.cardNumber,
-          validThru: req.body.validThru
+          validThru: req.body.validThru,
+          user_id: req.body.user_id
       },
       {
                 where: {
