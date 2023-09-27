@@ -1,7 +1,29 @@
 
-const { PaymentData } = require('../models');
+const { PaymentData, Sequelize } = require('../models');
 
 const paymentDatasController = {};
+
+paymentDatasController.searchAPaymentData = async (req, res) => {
+  const Op = Sequelize.Op;
+
+  try {
+    const paymentDatas = await PaymentData.findAll({
+      where: { user_id: { [Op.like]: `%${req.params.customerId}%` } },
+    });
+
+
+    return res.json({
+      success: true,
+      data: paymentDatas,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "No se han encontrado los datos de pago",
+      error: error.message,
+    });
+  }
+};
 
 paymentDatasController.getAllPaymentDatas = async (req, res) => {
 

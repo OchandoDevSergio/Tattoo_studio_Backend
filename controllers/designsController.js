@@ -1,10 +1,12 @@
 const { Design, Sequelize } = require('../models');
-
+//const { QueryTypes } = require('sequelize');
 const designsController = {};
 
 designsController.getAllDesigns = async (req, res) => {
   try {
     const allDesigns = await Design.findAll();
+    //const allDesigns = await sequelize.query('%${SELECT artists.name AS tatuador, designs.style, designs.picture as foto FROM artists INNER JOIN designs WHERE artists.id = designs.artist_id;}$%'); 
+
 
     return res.json({
       success: true,
@@ -27,6 +29,7 @@ designsController.searchADesign = async (req, res) => {
     const designs = await Design.findAll({
       where: { style: { [Op.like]: `%${req.params.criteria}%` } },
     });
+
 
     return res.json({
       success: true,
