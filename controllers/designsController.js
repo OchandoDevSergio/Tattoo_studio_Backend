@@ -1,13 +1,13 @@
 const { Design, Sequelize } = require('../models');
-//const { QueryTypes } = require('sequelize');
+// const { QueryTypes } = require('sequelize');
 const designsController = {};
 
 designsController.getAllDesigns = async (req, res) => {
   try {
     const allDesigns = await Design.findAll();
-    //const allDesigns = await sequelize.query('%${SELECT artists.name AS tatuador, designs.style, designs.picture as foto FROM artists INNER JOIN designs WHERE artists.id = designs.artist_id;}$%'); 
-
-
+    // const allDesigns = await sequelize.query('SELECT artists.name AS tatuador, designs.style, designs.picture as foto FROM artists INNER JOIN designs WHERE artists.id = designs.artist_id', { raw: true }); 
+    // const allDesigns = await sequelize.query(`SELECT * FROM tattoo_studio_backend.artists`);
+    console.log("peeeeeeeeeeeeeeeerrerete", allDesigns);
     return res.json({
       success: true,
       message: "Datos de todos los tatuajes recuperados",
