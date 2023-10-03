@@ -15,6 +15,7 @@ module.exports = {
     await queryInterface.bulkInsert("Artists", [
       {
         id: 1,
+        user_id: 6,
         name: "Carlos",
         portfolio: "",
         createdAt: "2023-09-02 00:29:32",
@@ -22,6 +23,7 @@ module.exports = {
       },
       {
         id: 2,
+        user_id: 7,
         name: "Cesar",
         portfolio: "",
         createdAt: "2023-09-02 00:29:32",

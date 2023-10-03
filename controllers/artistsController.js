@@ -32,6 +32,7 @@ artistsController.createNewArtist = async (req, res) => {
   try {
 
     const newArtist = await Artist.create({
+      user_id: req.body.user_id,
       name: req.body.name,
       portfolio: req.body.portfolio
     });
@@ -54,6 +55,7 @@ artistsController.modifyArtist = async (req, res) => {
 
       const updateArtist = await Artist.update(
         {
+          user_id: req.body.user_id,
           name: req.body.name,
           portfolio: req.body.portfolio
       },
