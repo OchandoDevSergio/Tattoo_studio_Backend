@@ -10,7 +10,7 @@ designsController.getAllDesigns = async (req, res) => {
             model: Artist,
             required: false,
             attributes: {
-              exclude : ['id','portfolio','updatedAt','createdAt'],
+              exclude : ['id','user_id','portfolio','updatedAt','createdAt'],
               include: ['name']
             }
           }
@@ -44,7 +44,7 @@ designsController.searchADesign = async (req, res) => {
             model: Artist,
             required: false,
             attributes: {
-              exclude : ['id','portfolio','updatedAt','createdAt'],
+              exclude : ['id','user_id','portfolio','updatedAt','createdAt'],
               include: ['name']
             }
           }

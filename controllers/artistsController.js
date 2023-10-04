@@ -1,7 +1,41 @@
 
-const { Artist } = require('../models');
+const { Design, Artist, Sequelize } = require('../models');
 
 const artistsController = {};
+
+artistsController.searchArtistDesigns = async (req, res) => {
+  const Op = Sequelize.Op;
+
+  try {
+
+    const artists = await Artist.findAll(
+      {
+        where: { user_id: { [Op.like]: `%${req.params.userId}%` } },
+        include : [
+          {
+            model: Design,
+            required: false,
+            attributes: {
+              exclude : ['artist_id','updatedAt','createdAt'],
+              include: ['id','style','picture']
+            }
+          }
+        ]
+      }
+    );
+
+    return res.json({
+      success: true,
+      data: artists,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "No se han encontrado los tatuajes",
+      error: error.message,
+    });
+  }
+};
 
 artistsController.getAllArtists = async (req, res) => {
 
