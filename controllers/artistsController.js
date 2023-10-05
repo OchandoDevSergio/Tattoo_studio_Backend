@@ -16,8 +16,8 @@ artistsController.searchArtistDesigns = async (req, res) => {
             model: Design,
             required: false,
             attributes: {
-              exclude : ['artist_id','updatedAt','createdAt'],
-              include: ['id','style','picture']
+              exclude : ['updatedAt','createdAt'],
+              include: ['id','style','picture','artist_id']
             }
           }
         ]
