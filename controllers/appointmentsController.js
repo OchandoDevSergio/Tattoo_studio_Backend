@@ -7,7 +7,28 @@ appointmentsController.getAllAppointments = async (req, res) => {
 
     try {
 
-        const allAppointments = await Appointment.findAll();
+        const allAppointments = await Appointment.findAll(
+          {
+            include : [
+              {
+                model: Artist,
+                required: false,
+                attributes: {
+                  exclude : ['id','user_id','portfolio','updatedAt','createdAt'],
+                  include: ['name']
+                }
+              },
+              {
+                model: User,
+                required: false,
+                attributes: {
+                  exclude : ['id','password','role_id','updatedAt','createdAt'],
+                  include: ['name','surnames','phone','email']
+                }
+              }
+            ]
+          }
+        );
 
         return res.json({
             success: true,
