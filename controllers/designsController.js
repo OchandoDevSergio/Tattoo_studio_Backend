@@ -121,12 +121,12 @@ designsController.modifyDesign = async (req, res) => {
 
 designsController.deleteDesign = async (req, res) => {
 
-    let body = req.body;
+    let tattooId = req.params.erase;
 
     try {
         const deleteDesign = await Design.destroy({
           where: {
-            id: body.id
+            id: tattooId
           },
         });
         return res.json({

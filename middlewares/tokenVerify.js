@@ -2,7 +2,10 @@
 const jwt = require("jsonwebtoken");
 
 const auth = (req, res, next) => {
-  try {
+
+  console.log(req.headers.authorization, "holaaa raton")
+
+ try {
     const bearerToken = req.headers.authorization;
     if (!bearerToken) {
       return res.status(501).json({
@@ -10,6 +13,7 @@ const auth = (req, res, next) => {
         message: "No tienes permiso para continuar",
       });
     }
+
     const token = bearerToken.split(" ")[1];
 
     const decoded = jwt.verify(token, "kant");

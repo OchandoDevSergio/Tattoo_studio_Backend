@@ -1,6 +1,8 @@
 
   const isArtist = (req, res, next) => {
 
+    console.log("SATANASSSSS PUTAAAAAAA",req.roleId);
+
     try {
       if (req.roleId !== 3) {
 

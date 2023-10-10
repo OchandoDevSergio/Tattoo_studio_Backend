@@ -12,6 +12,6 @@ router.get('/', designsController.getAllDesigns);
 router.get('/:criteria', designsController.searchADesign);
 router.post('/', auth, isArtist, designsController.createNewDesign);
 router.put('/', auth, isArtist, designsController.modifyDesign);
-router.delete('/', auth, isArtist, designsController.deleteDesign);
+router.delete('/:erase',  designsController.deleteDesign);
 
 module.exports = router;

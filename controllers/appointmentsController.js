@@ -1,5 +1,5 @@
 
-const { Appointment } = require('../models');
+const { Appointment, Artist, User } = require('../models');
 
 const appointmentsController = {};
 
