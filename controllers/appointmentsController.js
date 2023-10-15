@@ -49,6 +49,101 @@ appointmentsController.getAllAppointments = async (req, res) => {
 
 }
 
+appointmentsController.getCustomerAppointments = async (req, res) => {
+
+  try {
+
+      const allAppointments = await Appointment.findAll(
+        {
+          where: { user_id: { [Op.like]: `%${req.params.userId}%` } },
+          include : [
+            {
+              model: Artist,
+              required: false,
+              attributes: {
+                exclude : ['id','user_id','portfolio','updatedAt','createdAt'],
+                include: ['name']
+              }
+            },
+            {
+              model: User,
+              required: false,
+              attributes: {
+                exclude : ['id','password','role_id','updatedAt','createdAt'],
+                include: ['name','surnames','phone','email']
+              }
+            }
+          ]
+        }
+      );
+
+      return res.json({
+          success: true,
+          message: "Datos de todas las citas recuperados",
+          data: allAppointments,
+      });
+
+
+  } catch (error) {
+
+      return res.status(500).json({
+          success: false,
+          message: "Los datos no han podido ser recuperados",
+          error: error.message,
+      });
+
+  }
+
+}
+
+appointmentsController.getArtistAppointments = async (req, res) => {
+
+  try {
+
+      const allAppointments = await Appointment.findAll(
+        {
+          where: { artist_id: { [Op.like]: `%${req.params.artistId}%` } },
+          include : [
+            {
+              model: Artist,
+              required: false,
+              attributes: {
+                exclude : ['id','user_id','portfolio','updatedAt','createdAt'],
+                include: ['name']
+              }
+            },
+            {
+              model: User,
+              required: false,
+              attributes: {
+                exclude : ['id','password','role_id','updatedAt','createdAt'],
+                include: ['name','surnames','phone','email']
+              }
+            }
+          ]
+        }
+      );
+
+      return res.json({
+          success: true,
+          message: "Datos de todas las citas recuperados",
+          data: allAppointments,
+      });
+
+
+  } catch (error) {
+
+      return res.status(500).json({
+          success: false,
+          message: "Los datos no han podido ser recuperados",
+          error: error.message,
+      });
+
+  }
+
+}
+
+
 appointmentsController.createNewAppointment = async (req, res) => {
   try {
 
@@ -107,12 +202,12 @@ appointmentsController.modifyAppointment = async (req, res) => {
 
 appointmentsController.deleteAppointment = async (req, res) => {
 
-    let body = req.body;
+  let appointmentId = req.params.erase;
 
     try {
         const deleteAppointment = await Appointment.destroy({
           where: {
-            id: body.id
+            id: appointmentId
           },
         });
         return res.json({
