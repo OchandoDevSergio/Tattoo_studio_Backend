@@ -55,7 +55,7 @@ appointmentsController.getCustomerAppointments = async (req, res) => {
 
       const allAppointments = await Appointment.findAll(
         {
-          where: { user_id: { [Op.like]: `%${req.params.userId}%` } },
+          where: { user_id: req.params.userId  },
           include : [
             {
               model: Artist,
@@ -102,7 +102,7 @@ appointmentsController.getArtistAppointments = async (req, res) => {
 
       const allAppointments = await Appointment.findAll(
         {
-          where: { artist_id: { [Op.like]: `%${req.params.artistId}%` } },
+          where: { artist_id: req.params.artistId },
           include : [
             {
               model: Artist,
