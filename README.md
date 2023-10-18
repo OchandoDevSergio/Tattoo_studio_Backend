@@ -10,7 +10,7 @@ Correo: sergmar@mail.com  Contraseña: Bb1234
 Acceso cliente:
 Correo: alcast@mail.com  Contraseña: Aa1234
 
-Acceso cliente:
+Acceso artista:
 Correo: cemogi@mail.com  Contraseña: Cc1234
 
 ## Tecnologías utilizadas
