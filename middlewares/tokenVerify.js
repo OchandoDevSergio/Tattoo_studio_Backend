@@ -3,8 +3,6 @@ const jwt = require("jsonwebtoken");
 
 const auth = (req, res, next) => {
 
-  console.log(req.headers.authorization, "holaaa raton")
-
  try {
     const bearerToken = req.headers.authorization;
     if (!bearerToken) {
